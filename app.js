@@ -70,68 +70,21 @@ function buscarpalabraMatriz(arrayLetras,resultados, limite) {
 		}
 		let letra = arrayLetras[x][y].toUpperCase();
 		if (letra===palabraBuscar[0].toUpperCase()) {
-			resultados = horizontal(arrayLetras, resultados,y,x,1);
-			resultados = horizontal(arrayLetras, resultados,y,x,-1);
-			resultados = vertical(arrayLetras, resultados,y,x,1);
-			resultados = vertical(arrayLetras, resultados,y,x,-1);
-			resultados = diagonal(arrayLetras, resultados,y,x,1);
-			resultados = diagonal(arrayLetras, resultados,y,x,-1);
-			resultados = diagonalInverso(arrayLetras, resultados,y,x,1,-1);
-			resultados = diagonalInverso(arrayLetras, resultados,y,x,-1,1);
+			resultados = busqueda(arrayLetras, resultados,y,x,0,1);
+			resultados = busqueda(arrayLetras, resultados,y,x,0,-1);
+			resultados = busqueda(arrayLetras, resultados,y,x,1,0);
+			resultados = busqueda(arrayLetras, resultados,y,x,-1,0);
+			resultados = busqueda(arrayLetras, resultados,y,x,1,1);
+			resultados = busqueda(arrayLetras, resultados,y,x,-1,-1);
+			resultados = busqueda(arrayLetras, resultados,y,x,-1,1);
+			resultados = busqueda(arrayLetras, resultados,y,x,-1,1);
 		}
 		y++;
 	}
 	return resultados;
 }
 
-
-function horizontal(arrayLetras, resultados, dy, dx,sum) {
-	let x= dx;
-	for (let index = 0; (index < palabraBuscar.length && dy<arrayLetras[x].length && dy>=0 ); index++) {
-		let letra = arrayLetras[dx][dy].toUpperCase();
-		if (letra == palabraBuscar[index].toUpperCase() && index==2) {
-			resultados++;
-		}
-		else if (letra != palabraBuscar[index].toUpperCase()) {
-			index=palabraBuscar.length;
-		}
-			
-		dy+=sum;
-	}
-	return resultados;
-}
-
-function vertical(arrayLetras, resultados, dy, dx, sum) {
-	for (let index = 0; (index < palabraBuscar.length && dx<arrayLetras.length && dx>=0); index++) {
-		let letra = arrayLetras[dx][dy].toUpperCase();
-		if (letra == palabraBuscar[index].toUpperCase() && index==2) {
-			resultados++;
-		}
-		else if (letra != palabraBuscar[index].toUpperCase()) {
-			index=palabraBuscar.length;
-		}
-		dx+=sum;
-	}
-	return resultados;
-}
-
-function diagonal(arrayLetras, resultados, dy, dx, sum) {
-	let x= dx;
-	for (let index = 0; (index < palabraBuscar.length && dy<arrayLetras[x].length  && dx<arrayLetras.length && dx>=0 && dy>=0); index++) {
-		let letra = arrayLetras[dx][dy].toUpperCase();
-		if (letra == palabraBuscar[index].toUpperCase() && index==2) {
-			resultados++;
-		}
-		else if (letra != palabraBuscar[index].toUpperCase()) {
-			index=palabraBuscar.length;
-		}
-		dx+=sum;
-		dy+=sum;
-	}
-	return resultados;
-}
-
-function diagonalInverso(arrayLetras, resultados, dy, dx, sumx, sumy) {
+function busqueda(arrayLetras, resultados, dy, dx, sumx, sumy) {
 	let x= dx;
 	for (let index = 0; (index < palabraBuscar.length && dy<arrayLetras[x].length  && dx<arrayLetras.length && dx>=0 && dy>=0); index++) {
 		let letra = arrayLetras[dx][dy].toUpperCase();
