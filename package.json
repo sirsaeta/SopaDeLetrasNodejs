@@ -1,0 +1,16 @@
+{
+	"name": "sopa-de-letras",
+	"version": "0.0.1",
+	"description": "Sopa de Letras",
+	"main": "app.js",
+	"scripts": {
+		"start": "node app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sirsaeta/SopaDeLetrasNodejs.git"
+	},
+	"dependencies": {
+		"express": "4.17.1"
+	}
+}
